@@ -1,0 +1,17 @@
+ppm.h - Header pour la manipulation d'images au format PPM
+
+Ce header fournit des structures et des fonctions pour créer, manipuler et sauvegarder des images au format PPM (Portable Pixel Map).
+Structures :
+1.`struct ppm_pixel`:Cette structure représente un pixel dans une image PPM. Chaque pixel est composé de trois composantes : rouge (r), verte (g) et bleue (b), toutes codées sur 8 bits.
+2.`struct ppm_image`:cette structure représente toute une image PPM. Elle contient des informations sur la largeur, la hauteur de l'image et un tableau de pixels pour stocker les données de l'image.
+Fonctions :
+1.`int ppm_image_init(struct ppm_image *im, int w, int h)`:Initialise une image PPM avec une largeur w et une hauteur h données. Cette fonction alloue la mémoire nécessaire pour le tableau de pixels de l'image.
+2.`int ppm_image_release(struct ppm_image *im)`:Libère la mémoire associée à une image PPM. Cette fonction doit être appelée une fois que l'image n'est plus nécessaire pour éviter les fuites de mémoire.
+3.`int ppm_image_dump(struct ppm_image *im, char *path)`:Sauvegarde une image PPM dans un fichier spécifié par le chemin path. Les données de l'image sont écrites dans le format PPM.
+
+Fonctions Inline :
+1.`void ppm_setpixel(struct ppm_pixel *px, unsigned char r, unsigned char g, unsigned char b)`:Définit les valeurs des composantes d'un pixel.
+2.`void ppm_image_setpixel(struct ppm_image *im, int x, int y, unsigned char r, unsigned char g, unsigned char b)`: Définit les valeurs des composantes d'un pixel dans une image PPM à la position`(x, y)`.
+Prévention des Inclusions Multiples :
+
+Ce header utilise des directives de préprocesseur pour éviter les problèmes de double inclusion.
